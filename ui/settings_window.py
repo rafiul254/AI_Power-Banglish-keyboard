@@ -1,6 +1,3 @@
-"""
-settings_window.py — Dark-themed Tkinter settings GUI.
-"""
 import tkinter as tk
 from tkinter import ttk
 from config.settings import load_config, save_config
@@ -71,7 +68,6 @@ class SettingsWindow:
             self._vars[key] = var
             self._entry(form, var, show=show).grid(row=i, column=1, pady=10, padx=(14, 0))
 
-        # Model selector
         self._lbl(form, "AI Model:").grid(row=3, column=0, sticky="w", pady=10)
 
         model_var = tk.StringVar(value=self.config.get("model", "llama-3.3-70b-versatile"))
@@ -95,7 +91,6 @@ class SettingsWindow:
             style="Custom.TCombobox",
         ).grid(row=3, column=1, pady=10, padx=(14, 0))
 
-        # Save button
         tk.Button(
             self.root,
             text="  💾   Save Settings  ",
@@ -110,7 +105,6 @@ class SettingsWindow:
             activeforeground="white",
         ).pack(pady=22)
 
-        # Status message
         self.status_var = tk.StringVar(value="")
         self.status_lbl = tk.Label(
             self.root,
@@ -133,16 +127,16 @@ class SettingsWindow:
         new_config = {key: var.get().strip() for key, var in self._vars.items()}
 
         if not new_config.get("api_key"):
-            self.status_var.set("⚠️  API Key cannot be empty!")
+            self.status_var.set("⚠️ API Key cannot be empty!")
             self.status_lbl.config(fg=RED)
             return
 
         if save_config(new_config):
             self.config = new_config
-            self.status_var.set("✅  Saved! Restart the app to apply hotkey changes.")
+            self.status_var.set("✅ Saved! Restart the app to apply hotkey changes.")
             self.status_lbl.config(fg=GREEN)
         else:
-            self.status_var.set("❌  Could not save settings.")
+            self.status_var.set("❌ Could not save settings.")
             self.status_lbl.config(fg=RED)
 
     def show(self):
