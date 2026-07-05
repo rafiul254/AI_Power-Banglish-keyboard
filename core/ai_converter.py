@@ -1,7 +1,3 @@
-"""
-ai_converter.py — Groq API integration (FREE)
-Converts Banglish text to proper Bangla (Unicode) or English.
-"""
 from groq import Groq, AuthenticationError, RateLimitError, APIConnectionError
 from config.settings import load_config
 
@@ -33,17 +29,7 @@ English result: "Bro what are you doing, give me a call urgently"
 
 
 def convert_banglish(text: str, target: str = "bangla") -> str:
-    """
-    Convert Banglish text using Groq API (free).
 
-    Args:
-        text   : Banglish input string
-        target : "bangla"  → returns বাংলা Unicode
-                 "english" → returns clean English
-
-    Returns:
-        Converted string, OR error string starting with "❌"
-    """
     config  = load_config()
     api_key = config.get("api_key", "").strip()
 
