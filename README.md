@@ -114,6 +114,7 @@ Run ▶
 ---
 
 ## 🏗️ Project Structure
+
 AI_power-banglish-keyboard/
 │
 ├── desktop/                        ← Python desktop app
