@@ -50,7 +50,7 @@ Sits in your **system tray** and converts text in any app with a hotkey.
 
 ### Quick Start
 
-```bash
+```
 # 1. Clone the repo
 git clone https://github.com/rafiul254/ai-banglish-keyboard.git
 cd ai-banglish-keyboard/desktop
@@ -115,32 +115,40 @@ Run ▶
 
 ## 🏗️ Project Structure
 
+```text
 AI_power-banglish-keyboard/
 │
-├── desktop/                        ← Python desktop app
-│   ├── main.py                     ← Entry point
+├── desktop/
+│   ├── main.py                         # Entry point
 │   ├── requirements.txt
 │   ├── config/
-│   │   └── settings.py            ← Config manager (API key, hotkeys)
+│   │   └── settings.py                 # Config manager (API key, hotkeys)
 │   ├── core/
-│   │   ├── ai_converter.py        ← Groq API integration
-│   │   ├── hotkey_manager.py      ← Global hotkey listener
+│   │   ├── ai_converter.py             # Groq API integration
+│   │   ├── hotkey_manager.py           # Global hotkey listener
 │   │   └── clipboard_manager.py
 │   └── ui/
-│       ├── tray_icon.py           ← System tray icon
-│       └── settings_window.py     ← Tkinter settings GUI
+│       ├── tray_icon.py                # System tray icon
+│       └── settings_window.py          # Tkinter settings GUI
 │
-└── android-app/                    ← Android Kotlin app
-└── app/src/main/
-├── kotlin/com/rafiul/
-│   ├── MainActivity.kt    ← Main converter screen
-│   ├── SettingsActivity.kt← API key settings
-│   └── AIConverter.kt     ← Groq REST API client
-└── res/
-├── layout/
-│   ├── activity_main.xml
-│   └── activity_settings.xml
-└── values/themes.xml
+└── android-app/
+    └── app/
+        └── src/
+            └── main/
+                ├── kotlin/
+                │   └── com/
+                │       └── rafiul/
+                │           ├── MainActivity.kt        # Main converter screen
+                │           ├── SettingsActivity.kt    # API key settings
+                │           └── AIConverter.kt         # Groq REST API client
+                │
+                └── res/
+                    ├── layout/
+                    │   ├── activity_main.xml
+                    │   └── activity_settings.xml
+                    └── values/
+                        └── themes.xml
+```
 
 ---
 
