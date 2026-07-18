@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#1e1e2e"
+        android:padding="16dp">
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Banglish Converter"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#7c3aed"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="20dp"/>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Type Banglish here:"
+            android:textColor="#6c7086"
+            android:textSize="12sp"
+            android:layout_marginBottom="6dp"/>
+
+    <EditText
+            android:id="@+id/et_input"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:hint="ami aj tired, ghum dibo..."
+            android:textColorHint="#45475a"
+            android:textColor="#cdd6f4"
+            android:textSize="15sp"
+            android:background="#313244"
+            android:padding="12dp"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:layout_marginBottom="12dp"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+
+        <Button
+                android:id="@+id/btn_to_bangla"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="AI to Bangla"
+                android:textColor="#ffffff"
+                android:layout_marginEnd="6dp"/>
+
+        <Button
+                android:id="@+id/btn_to_english"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="AI to English"
+                android:textColor="#ffffff"
+                android:layout_marginStart="6dp"/>
+    </LinearLayout>
+
+    <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#a6e3a1"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:layout_marginBottom="12dp"/>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Converted text:"
+            android:textColor="#6c7086"
+            android:textSize="12sp"
+            android:layout_marginBottom="6dp"/>
+
+    <TextView
+            android:id="@+id/tv_output"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:hint="Result will appear here..."
+            android:textColorHint="#45475a"
+            android:textColor="#cdd6f4"
+            android:textSize="15sp"
+            android:background="#313244"
+            android:padding="12dp"
+            android:gravity="top"
+            android:layout_marginBottom="12dp"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+        <Button
+                android:id="@+id/btn_copy"
+                android:layout_width="0dp"
+                android:layout_height="46dp"
+                android:layout_weight="1"
+                android:text="Copy"
+                android:layout_marginEnd="4dp"/>
+
+        <Button
+                android:id="@+id/btn_share"
+                android:layout_width="0dp"
+                android:layout_height="46dp"
+                android:layout_weight="1"
+                android:text="Share"
+                android:layout_marginEnd="4dp"
+                android:layout_marginStart="4dp"/>
+
+        <Button
+                android:id="@+id/btn_clear"
+                android:layout_width="0dp"
+                android:layout_height="46dp"
+                android:layout_weight="1"
+                android:text="Clear"
+                android:layout_marginStart="4dp"/>
+    </LinearLayout>
+
+    <Button
+            android:id="@+id/btn_settings"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:text="Settings"/>
+
+</LinearLayout>

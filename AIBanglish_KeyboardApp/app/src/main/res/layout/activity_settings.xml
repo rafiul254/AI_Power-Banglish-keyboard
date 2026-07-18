@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#1e1e2e"
+        android:padding="24dp">
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#7c3aed"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="28dp"/>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Groq API Key"
+            android:textColor="#cdd6f4"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+    <EditText
+            android:id="@+id/et_api_key"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:hint="gsk_..."
+            android:textColorHint="#45475a"
+            android:textColor="#cdd6f4"
+            android:background="#313244"
+            android:padding="14dp"
+            android:inputType="textPassword"/>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Get free key at console.groq.com"
+            android:textColor="#6c7086"
+            android:textSize="11sp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="24dp"/>
+
+    <Button
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="Save API Key"/>
+
+    <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#a6e3a1"
+            android:textSize="13sp"
+            android:gravity="center"
+            android:layout_marginTop="16dp"/>
+
+</LinearLayout>
