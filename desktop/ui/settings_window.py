@@ -89,7 +89,7 @@ class SettingsWindow:
         ttk.Combobox(
             form,
             textvariable=model_var,
-            values=["llama-3.3-70b-versatile", "llama3-8b-8192", "gemma2-9b-it"],
+            values=["qwen/qwen3.6-27b", "openai/gpt-oss-120b", "openai/gpt-oss-20b"],
             width=35,
             state="readonly",
             style="Custom.TCombobox",

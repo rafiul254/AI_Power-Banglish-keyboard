@@ -1,4 +1,3 @@
-
 import keyboard
 import pyperclip
 import time
@@ -14,7 +13,7 @@ class HotkeyManager:
     def __init__(self, status_callback: Optional[Callable[[str], None]] = None):
         self.status_callback = status_callback
         self._registered = False
-        self._processing = False  # Prevent overlapping conversions
+        self._processing = False
 
 
     def _notify(self, msg: str):
@@ -24,14 +23,14 @@ class HotkeyManager:
 
     def _grab_field_text(self) -> tuple[str, str]:
 
-        original_clipboard = pyperclip.paste()   # backup clipboard
-        pyperclip.copy("")                        # clear so we detect success
+        original_clipboard = pyperclip.paste()
+        pyperclip.copy("")
         time.sleep(0.05)
 
-        keyboard.press_and_release("ctrl+a")      # select all
-        time.sleep(0.12)
-        keyboard.press_and_release("ctrl+c")      # copy
-        time.sleep(0.25)                          # wait for OS clipboard
+        keyboard.press_and_release("ctrl+a")
+        time.sleep(0.3)
+        keyboard.press_and_release("ctrl+c")
+        time.sleep(0.5)
 
         copied = pyperclip.paste()
         return copied, original_clipboard
@@ -64,7 +63,7 @@ class HotkeyManager:
                 pyperclip.copy(original_clip)
                 return
 
-            # Step 2 — Call Claude API
+
             result = convert_banglish(text, target)
 
             if result.startswith("❌"):
@@ -72,10 +71,9 @@ class HotkeyManager:
                 pyperclip.copy(original_clip)
                 return
 
-            # Step 3 — Replace text in field
             self._paste_text(result)
 
-            # Step 4 — Restore original clipboard
+
             time.sleep(0.2)
             pyperclip.copy(original_clip)
 
@@ -126,7 +124,7 @@ class HotkeyManager:
     def start(self):
 
         self.register()
-        keyboard.wait()   # Blocking — keeps the thread alive
+        keyboard.wait()
 
     def stop(self):
 

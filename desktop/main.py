@@ -1,27 +1,7 @@
-"""
-main.py — AI Banglish Keyboard (Desktop)
-=========================================
-Author : Rafi ul Islam  (@rafiul254)
-GitHub : github.com/rafiul254/ai-banglish-keyboard
-
-Hotkeys (default, configurable in Settings):
-  Ctrl+Shift+B  →  Convert field text to বাংলা
-  Ctrl+Shift+E  →  Convert field text to English
-
-Run:
-  python main.py
-
-Requirements:
-  pip install -r requirements.txt
-  (Windows: run as normal user)
-  (Linux  : run with sudo for global hotkey capture)
-"""
-
 import sys
 import os
 import threading
 
-# Make sure sibling packages (config, core, ui) are importable
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from config.settings import load_config
@@ -31,26 +11,20 @@ from ui.settings_window import SettingsWindow
 
 
 class AIKeyboardApp:
-    """
-    Top-level application class. Wires together:
-      • HotkeyManager  (background daemon thread)
-      • TrayIcon       (main thread — blocking)
-      • SettingsWindow (spawned on demand)
-    """
+
 
     def __init__(self):
         self.tray:           TrayIcon      = None
         self.hotkey_manager: HotkeyManager = None
 
-    # ── Callbacks ─────────────────────────────────────────────────────────────
 
     def _on_status(self, message: str):
-        """Bubble status updates from HotkeyManager to the tray icon."""
+
         if self.tray:
             self.tray.update_status(message)
 
     def _open_settings(self):
-        """Show settings window (runs in its own thread to stay non-blocking)."""
+
         win = SettingsWindow()
         win.show()
 
@@ -64,16 +38,14 @@ class AIKeyboardApp:
             self.hotkey_manager.stop()
         sys.exit(0)
 
-    # ── First-run check ───────────────────────────────────────────────────────
 
     def _first_run_check(self):
-        """If no API key is saved, open Settings before anything else."""
+
         cfg = load_config()
         if not cfg.get("api_key", "").strip():
             print("[App] First run — opening Settings to collect API key...")
             self._open_settings()
 
-    # ── Main ──────────────────────────────────────────────────────────────────
 
     def run(self):
         print("=" * 55)
@@ -82,17 +54,16 @@ class AIKeyboardApp:
 
         self._first_run_check()
 
-        # Wire up hotkey manager
+
         self.hotkey_manager = HotkeyManager(status_callback=self._on_status)
 
-        # Wire up tray icon
         self.tray = TrayIcon(
             on_settings=self._open_settings,
             on_reload=self._reload_hotkeys,
             on_quit=self._quit,
         )
 
-        # Start hotkey listener on a background daemon thread
+
         t = threading.Thread(
             target=self.hotkey_manager.start,
             daemon=True,
@@ -107,7 +78,6 @@ class AIKeyboardApp:
         print("\n  Running in system tray. Right-click icon for menu.")
         print("  Focus any text field and press a hotkey to convert.\n")
 
-        # Tray blocks the main thread
         self.tray.run()
 
 
